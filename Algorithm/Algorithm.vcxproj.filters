@@ -31,6 +31,12 @@
     <Filter Include="소스 파일\Sorting">
       <UniqueIdentifier>{29d27b36-cea0-4fe4-bb30-2a0470031a39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\DP">
+      <UniqueIdentifier>{d8d4af5d-ee26-4774-aac7-5d43a18f15a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Exhaustive Search">
+      <UniqueIdentifier>{c97c7765-f22d-4377-99cb-5c5f05d1a9e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="완주하지 못한 선수.cpp">
@@ -59,6 +65,48 @@
     </ClCompile>
     <ClCompile Include="가장 큰 수.cpp">
       <Filter>소스 파일\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="num1260.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="num1987.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="num2178.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="num2468.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
+    <ClCompile Include="num1468.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num1912.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num2193.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num2747.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num10844.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num11727.cpp">
+      <Filter>소스 파일\DP</Filter>
+    </ClCompile>
+    <ClCompile Include="num2810.cpp">
+      <Filter>소스 파일\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="num2839.cpp">
+      <Filter>소스 파일\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="num5585.cpp">
+      <Filter>소스 파일\Greedy</Filter>
+    </ClCompile>
+    <ClCompile Include="소수찾기.cpp">
+      <Filter>소스 파일\Exhaustive Search</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
