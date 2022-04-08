@@ -108,5 +108,8 @@
     <ClCompile Include="소수찾기.cpp">
       <Filter>소스 파일\Exhaustive Search</Filter>
     </ClCompile>
+    <ClCompile Include="다리를 지나는 트럭.cpp">
+      <Filter>소스 파일\Queue, Stack</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
