@@ -6,50 +6,43 @@ using namespace std;
 
 int solution(int bridge_length, int weight, vector<int> truck_weights) {
     int answer = 0;
-    
-    queue<int> wait_truck;   // 대기중 트럭
-    queue<int> truck_on_bridge;   // 다리를 지나는 트럭
-    int total_weights = 0;   // 현재 다리위의 무게
+
+    queue<int> truckOnBridge;   // 현재 다리위에 있는 트럭
+    queue<int> waitTruck;
+
+    int totalWeights = 0;   // 다리 위 트럭의 전체 무게
+    int curTruck = 0;   // 이제 들어올 트럭의 무게
 
     for (int i = 0; i < truck_weights.size(); i++) {
-        wait_truck.push(truck_weights[i]);
+        waitTruck.push(truck_weights[i]);
     }
 
-    while (!wait_truck.empty()) {
-        cout << "========" << endl;
-        answer++;
-        cout << "truck on bridge size : " << truck_on_bridge.size() << endl;
-        int cur_truck = wait_truck.front();   // 첫번째로 대기중인 truck
-        cout << "cur_truck : " << cur_truck << endl;
-        // 앞에 들어갈 자리가 있는지, 무게는 넘지 않는지 확인해야함
-        // 1. 앞에 들어갈 자리가 있는지
-        if (truck_on_bridge.size() >= bridge_length) {   // 들어갈 자리가 없을 때 -> queue의 마지막이 0이 아닐때 (4, 0)
-            cout << "들어갈 자리 없음" << endl;
-            truck_on_bridge.push(0);   // 0이라는 것은 해당 차례에 들어간 트럭이 없다는것            
-        }
-        else {   // 들어갈 자리가 있을 때
-            if (total_weights + cur_truck <= weight) {   // 새로운 트럭이 들어가도 총 무게가 넘지 않을 때
-                cout << "OK!" << endl;
-                truck_on_bridge.push(cur_truck);   // 다리로 트럭을 올림
-                wait_truck.pop();   // 대기열에서 빠짐
-                total_weights += cur_truck;   // 다리위 현재 무게
-                cout << "current total weights after push : " << total_weights << endl;
+    while (!waitTruck.empty()) {   // 다리 위 트럭이 모두 빠질 때 까지
+        cout << "=====================" << endl;
+        curTruck = waitTruck.front();
+        cout << "현재 트럭 : " << curTruck << endl;
+        if ((truckOnBridge.size() != bridge_length) || (truckOnBridge.back() == 0)) {   // 들어갈 자리 있을 때
+            if (totalWeights + curTruck > weight) {   // 무게가 초과일 때
+                cout << "무게 초과" << endl;
+                truckOnBridge.push(0);   // 0이라는 것은 아무것도 올라가지 않았다는 것, 즉 빈공간!
+
             }
-            else {   // 총 무게가 넘을 때
-                cout << "총 무게가 넘음" << endl;
-                truck_on_bridge.push(0);   // 0이라는 것은 해당 차례에 들어간 트럭이 없다는것
-            
-            }          
+            else {   // 여기서만 새로운 트럭 들어갈 수 있음
+                cout << "* 새로운 트럭 진입 *" << endl;
+                waitTruck.pop();
+                truckOnBridge.push(curTruck);   // 다리 위에 새로운 트럭
+                totalWeights += curTruck;   // 다리 위 무게 증가
+            }
         }
-        // queue에 있는지 bridge length 넘었을 때 다리에서 빠져야함 - 조건 설정 어떻게????
-        if (truck_on_bridge.size() == bridge_length && truck_on_bridge.front() != 0) {   // 7,0, 4
-            total_weights -= truck_on_bridge.front();    // 다리위 무게 빠짐
-            cout << "current total weights after pop truck : " << total_weights << endl;
-            truck_on_bridge.pop();
+        // 무조건 빠져야함
+        if (truckOnBridge.size() >= bridge_length) {   // 아직 큐가 다 채워지지않았을 경우를 제외하고
+            totalWeights -= truckOnBridge.front();   // 다리 지탱 무게 감소
+            truckOnBridge.pop();   // 트럭 빠져나옴    
         }
+        answer++;
     }
-
-    return answer;
+        
+    return bridge_length + answer;
 }
 
 int main(void) {
@@ -60,7 +53,23 @@ int main(void) {
 
     int answer = solution(bridge_weight, weight, truck_weights);
 
-    cout << "answer : " << answer << endl;
+    cout << "answer1 : " << answer << endl;
+
+    bridge_weight = 100;
+    weight = 100;
+    truck_weights = { 10 };
+
+    answer = solution(bridge_weight, weight, truck_weights);
+
+    cout << "answer2 : " << answer << endl;
+
+    bridge_weight = 100;
+    weight = 100;
+    truck_weights = { 10,10,10,10,10,10,10,10,10,10 };
+
+    answer = solution(bridge_weight, weight, truck_weights);
+
+    cout << "answer3 : " << answer << endl;
 
     return 0;
 }
