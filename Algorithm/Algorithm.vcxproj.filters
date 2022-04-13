@@ -37,6 +37,9 @@
     <Filter Include="소스 파일\Exhaustive Search">
       <UniqueIdentifier>{c97c7765-f22d-4377-99cb-5c5f05d1a9e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Heap">
+      <UniqueIdentifier>{ec7b7ca1-c661-48a3-869e-e8dbc666a801}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="완주하지 못한 선수.cpp">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="다리를 지나는 트럭.cpp">
       <Filter>소스 파일\Queue, Stack</Filter>
+    </ClCompile>
+    <ClCompile Include="디스크 컨트롤러.cpp">
+      <Filter>소스 파일\Heap</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
