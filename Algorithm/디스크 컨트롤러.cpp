@@ -22,45 +22,33 @@ int solution(vector<vector<int>> jobs) {
     int priorFinTime = 0;   // 바로 직전 작업이 끝난 시간
     priority_queue<vector<int>, vector<vector<int>>, compare> pq;
 
-    sort(jobs.begin(), jobs.end());
+    sort(jobs.begin(), jobs.end());   // jobs 정렬, 요청 들어온 시간 순, 요청 들어온 시간이 같다면 소요시간 순
 
-    int i = 0;
-    vector<int> cur_job;
+    cout << "********** job **********" << endl;
 
-    while (i != jobs.size()) {
-        cout << "i : " << i << endl;
-        cout << "priorFinTime : " << priorFinTime << endl;
-        cur_job = jobs[i];   // 현재 job
-        cout << cur_job[0] << ", " << cur_job[1] << endl;
-        if (priorFinTime <= cur_job[0]) {   // 현재 처리중인 작업이 없는 경우
-            priorFinTime = cur_job[0];   // 현재 시간은 요청이 들어온 시간임
-            answer += cur_job[1];   // 총 소요시간
-            priorFinTime += cur_job[1];   // 작업이 끝난 후 현재 시간은 처리 시간을 더한 것
-            i++;
-        }
-        else {   // 현재 처리중인 작업이 있을 경우 -> queue에 넣어야함
-            cout << "현재 처리중인 작업이 있음" << endl;
-            while ((priorFinTime > jobs[i][0])) {   // 현재 실행 중인 작업 중 들어온 모든 요청 queue에 넣기
-                cur_job = jobs[i];   // 현재 job
-                cout << cur_job[0] << ", " << cur_job[1] << endl;
-                pq.push(cur_job);   // 처리시간 순서대로 queue에 넣음
-                i++;
-                if (i == jobs.size()) {
-                    break;
-                }
-            }
-            cout << "queue에 들어온 순서대로 요청 처리" << endl;
-            while (!pq.empty()) {   // queue에 들어온 요청 순서대로 처리
-                cur_job = pq.top();
-                cout << cur_job[0] << ", " << cur_job[1] << endl;
-                answer += (priorFinTime - cur_job[0] + cur_job[1]);   // 총 소요시간
-                priorFinTime += cur_job[1];   // 이전 작업이 끝난 현재 시간에서 처리시간을 더하면 현재 시간
-                pq.pop();
-                cout << "priorFInTime : " << priorFinTime << endl;
-            }
-        }
+    for (int i = 0; i < jobs.size(); i++) {
+        cout << jobs[i][0] << ", " << jobs[i][1] << endl;
     }
 
+    int i = 0;
+    vector<int> cur_job;   // 현재 실행될 작업
+
+    while (i < jobs.size() || !pq.empty()) {
+        if (i < jobs.size() && priorFinTime >= jobs[i][0]) {   // 현재 시간보다 작은 시간에 들어온 작업이 있을 경우
+            pq.push(jobs[i]);   // 소요시간순으로 push
+            i++;
+            continue;
+        }
+        if (!pq.empty()) {   // 큐가 비지않았다면
+            cur_job = pq.top();
+            priorFinTime += cur_job[1];
+            answer += priorFinTime - cur_job[0];
+            pq.pop();
+        }
+        else
+            priorFinTime = jobs[i][0];
+    }
+    
     return answer / jobs.size();
 }
 
@@ -73,26 +61,11 @@ int main(void) {
 
     vector<vector<int>> jobs3 = { {0, 5}, {2, 10}, {10000, 2} };
 
-    cout << "**************job***************" << endl;
-    
-    for (int i = 0; i < jobs.size(); i++) {   // 요청 시간순 a[0] 으로 정렬
-        for (int j = 0; j < jobs[i].size(); j++) {
-            cout << jobs[i][j] << " ";
-        }
-        cout << endl;
-    }
+    vector<vector<int>> jobs4 = { {0, 3}, {4, 1} };
 
     int answer = solution(jobs);
 
     cout << "answer : " << answer << endl;
-
-    cout << "**************job2***************" << endl;
-    for (int i = 0; i < jobs2.size(); i++) {   // 요청 시간순 a[0] 으로 정렬
-        for (int j = 0; j < jobs2[i].size(); j++) {
-            cout << jobs2[i][j] << " ";
-        }
-        cout << endl;
-    }
 
     int answer2 = solution(jobs2);
 
@@ -101,6 +74,38 @@ int main(void) {
     int answer3 = solution(jobs3);
 
     cout << "answer3 : " << answer3 << endl;
+
+    int answer4 = solution(jobs4);
+
+    cout << "answer4 : " << answer4 << endl;
+
+    jobs = { {0, 3},{0, 2},{1, 9},{2, 6} };   // 8
+
+    cout << "answer5 : " << solution(jobs) << endl;
+
+    jobs = { {0, 9}, {0, 4}, {0, 5}, {0, 7}, {0, 3} };   // 13
+
+    cout << "answer6 : " << solution(jobs) << endl;
+
+    jobs = { {0, 3}, {4, 6} };   // 4
+
+    cout << "answer7 : " << solution(jobs) << endl;
+
+    jobs = { {0, 3}, {4, 4}, {5, 3}, {4, 1} };    // 3
+
+    cout << "answer8 : " << solution(jobs) << endl;
+
+    jobs = { {0, 3}, {1, 9}, {500, 6} };   // 6
+
+    cout << "answer10 : " << solution(jobs) << endl;
+
+    jobs = { {1, 9}, {1, 4}, {1, 5}, {1, 7}, {1, 3} };   // 13
+
+    cout << "answer11 : " << solution(jobs) << endl;
+
+    jobs = { {0, 5}, {1, 4}, {6, 1}, {7, 1} };
+
+    cout << "answer12 : " << solution(jobs) << endl;   // 5
 
     return 0;
 }
