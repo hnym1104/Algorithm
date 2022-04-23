@@ -117,5 +117,8 @@
     <ClCompile Include="디스크 컨트롤러.cpp">
       <Filter>소스 파일\Heap</Filter>
     </ClCompile>
+    <ClCompile Include="H-Index.cpp">
+      <Filter>소스 파일\Sorting</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
