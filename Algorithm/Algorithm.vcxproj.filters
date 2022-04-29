@@ -120,5 +120,8 @@
     <ClCompile Include="H-Index.cpp">
       <Filter>소스 파일\Sorting</Filter>
     </ClCompile>
+    <ClCompile Include="카펫.cpp">
+      <Filter>소스 파일\Exhaustive Search</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
