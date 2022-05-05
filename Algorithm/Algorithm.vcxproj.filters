@@ -40,6 +40,9 @@
     <Filter Include="소스 파일\Heap">
       <UniqueIdentifier>{ec7b7ca1-c661-48a3-869e-e8dbc666a801}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\기출">
+      <UniqueIdentifier>{8d5134d4-980b-4f90-a4a5-c659455579b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="완주하지 못한 선수.cpp">
@@ -122,6 +125,9 @@
     </ClCompile>
     <ClCompile Include="카펫.cpp">
       <Filter>소스 파일\Exhaustive Search</Filter>
+    </ClCompile>
+    <ClCompile Include="2021_카카오_채용연계형_숫자_문자열과_영단어.cpp">
+      <Filter>소스 파일\기출</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
