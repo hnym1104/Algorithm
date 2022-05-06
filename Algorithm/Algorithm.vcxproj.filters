@@ -135,5 +135,8 @@
     <ClCompile Include="num2606.cpp">
       <Filter>소스 파일\BFS, DFS</Filter>
     </ClCompile>
+    <ClCompile Include="2021_카카오_채용연계형_거리두기_확인하기.cpp">
+      <Filter>소스 파일\기출</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
