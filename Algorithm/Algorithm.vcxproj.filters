@@ -132,5 +132,8 @@
     <ClCompile Include="num2667.cpp">
       <Filter>소스 파일\BFS, DFS</Filter>
     </ClCompile>
+    <ClCompile Include="num2606.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
