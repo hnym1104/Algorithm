@@ -129,5 +129,8 @@
     <ClCompile Include="2021_카카오_채용연계형_숫자_문자열과_영단어.cpp">
       <Filter>소스 파일\기출</Filter>
     </ClCompile>
+    <ClCompile Include="num2667.cpp">
+      <Filter>소스 파일\BFS, DFS</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
